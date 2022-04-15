@@ -21,7 +21,7 @@ def ensureFile(f):
 # Parse command-line arguments
 parser = argparse.ArgumentParser( description=( 'Split text into multiple '
                                               + 'pages to be printed on  '
-                                              + 'overhead sheets'
+                                              + 'transparent overhead sheets'
                                               )
                                 )
 parser.add_argument( '-i'
@@ -41,6 +41,11 @@ parser.add_argument( '-o'
                    , metavar='FILE'
                    , required=True
                    , help='File to output the result'
+                   )
+parser.add_argument( '--char-split'
+                   , action='store_true'
+                   , default=False
+                   , help='Split on characters instead of words'
                    )
 args = parser.parse_args();
 
@@ -94,24 +99,34 @@ with open(args.input, 'r') as f:
     fail('invalid input format: no text given')
   texts.append((names, text_lines))
 
-# Split each line into words and randomly assign a name index
+# Split each line into parts and randomly assign a name index
 old_texts = texts
 texts = []
-for (names, lines) in old_texts:
-  lines = [ [ (w, random.randint(0, len(names)-1))
-              for w in l.split(' ')
-            ] if len(l) > 0 else []
-            for l in lines
-          ]
+for (names, old_lines) in old_texts:
+  lines = []
+  for l in old_lines:
+    if args.char_split:
+      lines.append( [ (c, random.randint(0, len(names)-1))
+                      for c in l
+                    ]
+                  )
+    else:
+      lines.append( [ (w, random.randint(0, len(names)-1))
+                      for w in l.split(' ')
+                    ]
+                  )
   texts.append((names, lines))
 
 # Generate latex page content
 pages = []
 for (names, text_data) in texts:
   for i in range(0, len(names)):
-    lines = [ ' '.join([ w if i == n else '\\phantom{{{}}}'.format(w)
-                         for (w, n) in l
-                       ])
+    sep_char = ' ' if not args.char_split else ''
+    lines = [ sep_char
+              .join( [ w if i == n else '\\phantom{{{}}}'.format(w)
+                       for (w, n) in l
+                     ]
+                   )
               if len(l) > 0 else '\\vspace{\\baselineskip}'
               for l in text_data
             ]
