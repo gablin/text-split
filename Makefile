@@ -1,5 +1,5 @@
-texts.pdf: base.tex split.py texts.txt
-	./split.py -i texts.txt -l base.tex -o tmp.tex --char-split
+%.pdf: base.tex split.py %.txt
+	./split.py -i $(@:.pdf=.txt) -l base.tex -o tmp.tex --char-split
 	pdflatex tmp
 	mv tmp.pdf $@
 	$(RM) tmp.tex
