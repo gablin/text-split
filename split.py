@@ -130,7 +130,14 @@ for (names, text_data) in texts:
               if len(l) > 0 else '\\vspace{\\baselineskip}'
               for l in text_data
             ]
-    p = ( '\chead[{0}]{{{0}}}\n'.format(names[i])
+    p = ( '\chead{{{0}}}\n'
+          .format( '\\hspace{2em}'
+                   .join( [ names[j] if j == i
+                            else '\\phantom{{{}}}'.format(names[j])
+                            for j in range(0, len(names))
+                          ]
+                        )
+                 )
         + '\\par\n'.join(lines)
         )
     pages.append(p)
