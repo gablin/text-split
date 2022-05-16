@@ -1,6 +1,9 @@
+TEXLIVE=texlive/bin/x86_64-linux
+PDFLATEX=$(TEXLIVE)/pdflatex
+
 %.pdf: base.tex split.py %.txt
 	./split.py -i $(@:.pdf=.txt) -l base.tex -o tmp.tex --char-split
-	pdflatex tmp
+	$(PDFLATEX) tmp
 	mv tmp.pdf $@
 	$(RM) tmp.tex
 

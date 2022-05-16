@@ -1,0 +1,52 @@
+name bibtex
+category Package
+revision 62387
+shortdesc Process bibliographies for LaTeX, etc
+longdesc BibTeX allows the user to store his citation data in generic
+longdesc form, while printing citations in a document in the form
+longdesc specified by a BibTeX style, to be specified in the document
+longdesc itself (one often needs a LaTeX citation-style package, such as
+longdesc natbib as well). BibTeX itself is an ASCII-only program; there
+longdesc is, however, a version that copes with 8-bit character sets.
+longdesc However, BibTeX's facilities rapidly run out as one moves away
+longdesc from simple ASCII (for example, in the various national sorting
+longdesc rules for languages expressed in different parts of ISO-8859 --
+longdesc the "ISO Latin" series). For more flexibility, the user is
+longdesc urged to consider using biber with BibLaTeX to typeset its
+longdesc output.
+depend bibtex.ARCH
+depend kpathsea
+containersize 14904
+containerchecksum 8fc09e4b46ef31d958d385db19cc5b87f0c29885874e530ca3658c721a8c0659e194072058cd2df4b0f20604aa5db01f224a28ed7186663e2619617ccae3fc7c
+doccontainersize 399600
+doccontainerchecksum cde826602766ae12b73d2eebe3ff8b190ecee3ee6854fd852700b6f24d9dc44c43942759016b2b6f04fe0b7285db9007e9bf940f94d170ae7c8af2eb9c521267
+docfiles size=134
+ texmf-dist/doc/bibtex/base/README
+ texmf-dist/doc/bibtex/base/btxbst.doc
+ texmf-dist/doc/bibtex/base/btxdoc.bib
+ texmf-dist/doc/bibtex/base/btxdoc.pdf details="Using BibTeX"
+ texmf-dist/doc/bibtex/base/btxdoc.tex
+ texmf-dist/doc/bibtex/base/btxhak.pdf details="Writing BibTeX styles"
+ texmf-dist/doc/bibtex/base/btxhak.tex
+ texmf-dist/doc/man/man1/bibtex.1
+ texmf-dist/doc/man/man1/bibtex.man1.pdf
+runfiles size=51
+ texmf-dist/bibtex/bib/base/xampl.bib
+ texmf-dist/bibtex/bst/base/abbrv.bst
+ texmf-dist/bibtex/bst/base/acm.bst
+ texmf-dist/bibtex/bst/base/alpha.bst
+ texmf-dist/bibtex/bst/base/apalike.bst
+ texmf-dist/bibtex/bst/base/ieeetr.bst
+ texmf-dist/bibtex/bst/base/plain.bst
+ texmf-dist/bibtex/bst/base/siam.bst
+ texmf-dist/bibtex/bst/base/unsrt.bst
+ texmf-dist/tex/generic/bibtex/apalike.sty
+ texmf-dist/tex/generic/bibtex/apalike.tex
+catalogue-contact-bugs https://lists.tug.org/tex-k
+catalogue-contact-home https://tug.org/bibtex
+catalogue-contact-repository https://tug.org/svn/texlive/trunk/Build/source/texk/web2c/
+catalogue-contact-support https://lists.tug.org/tex-k
+catalogue-ctan /biblio/bibtex/base
+catalogue-license knuth
+catalogue-topics biblio
+catalogue-version 0.99d

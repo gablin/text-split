@@ -5,8 +5,7 @@ can be printed onto overhead pages and, when placed on top of one another,
 results in the full text again.
 
 The script takes a file with texts and produces a LaTeX file, which is then
-transformed into a corresponding PDF. Hence TeX Live or something similar needs
-to be installed.
+transformed into a corresponding PDF.
 
 There is a Makefile containing a recipe on how to build the PDF.
 
